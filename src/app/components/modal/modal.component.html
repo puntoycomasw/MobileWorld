@@ -1,0 +1,82 @@
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ !this.dataApi.selectedProduct.id ? 'New Product' : 'Update Product'}}
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="formProduct" #formProduct="ngForm" (ngSubmit)="onSaveProduct(formProduct)">
+          <input type="hidden" name="id" [(ngModel)]="this.dataApi.selectedProduct.id">
+          <input type="hidden" name="userUid" [value]="userUid"><!--  -->
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="type">Type</label>
+              <input type="text" name="type" class="form-control" placeholder="Type"
+                [(ngModel)]="this.dataApi.selectedProduct.type" >
+            </div> 
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Name"
+                [(ngModel)]="this.dataApi.selectedProduct.name">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="brand">Brand</label>
+              <input type="text" name="brand" class="form-control" placeholder="Brand"
+                [(ngModel)]="this.dataApi.selectedProduct.brand">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="model">Model</label>
+              <input type="text" name="model" class="form-control" placeholder="Model"
+                [(ngModel)]="this.dataApi.selectedProduct.model">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="image">Image</label>
+              <input type="text" name="image" class="form-control" placeholder="Image"
+                [(ngModel)]="this.dataApi.selectedProduct.image">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="price">Price</label>
+              <input type="number" name="price" class="form-control" placeholder="Price"
+                [(ngModel)]="this.dataApi.selectedProduct.price">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="quantity">Quantity</label>
+              <input type="number" name="quantity" class="form-control" placeholder="Quantity"
+                [(ngModel)]="this.dataApi.selectedProduct.quantity">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="offer">Offer</label>
+              <select name="offer" class="form-control" [(ngModel)]="this.dataApi.selectedProduct.offer">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="col-form-label">Description:</label>
+            <textarea class="form-control" name="description"
+              [(ngModel)]="this.dataApi.selectedProduct.description"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" #btnClose data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save Product</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
