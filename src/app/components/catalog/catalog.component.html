@@ -1,24 +1,86 @@
 <body>
-  <div class="carousel">
+  <div class="container">
+    <div class="">
+      <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active mb-3">
+            <img class="d-block w-100"
+              src="http://www.commerce.wa.gov/wp-content/uploads/2018/09/MobileWorldCongress.jpg">
+          </div>
+
+          <div class="carousel-item" *ngFor="let phone of products">
+            <a>
+              <div class="card mb-3">
+                <!-- Espacio entre filas -->
+                <div class="row no-gutters">
+                  <div class="col-md-5">
+                    <img [src]="phone.image" class="card-img" [alt]="phone.name"> <!-- Zise 400px x 300px -->
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-body">
+                      <h5 class="card-title">{{phone.name}}</h5>
+                      <p class="card-text">{{phone.description}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <i class="material-icons btn-outline-dark">
+            arrow_back_ios
+          </i>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+          <i class="material-icons btn-outline-dark">
+            arrow_forward_ios </i>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="carousel">
     <a *ngFor="let phone of products" class="carousel-item" href="#five!"><img [src]="phone.image"
         class="carousel-image" style="height: 10cm;width:7cm"></a>
-  </div>
+  </div> -->
   <div class="container">
     <div class="row">
-      <div *ngFor="let product of products" class="col s12 m3">
+      <div *ngFor="let phone of products" class="col-12 col-sm-8 col-md-12 col-lg-3 mb-3">
         <div class="card">
-          <div class="card-image">
-            <img [src]="product.image" [alt]="product.name" height="180">
-            <span class="card-title">{{product.name}}</span>
-          </div>
-          <div class="card-content">
-            <p><b>Price: </b>{{product.price | currency}}</p>
-          </div>
-          <div class="card-action">
-            <a>Buy</a>
+          <a href="#"> <img class="card-img" [src]="phone.image" [alt]="phone.name"></a>
+          <!-- <div class="card-img-overlay d-flex justify-content-end">
+            <a href="#" class="card-link text-danger like">
+              <i class="fas fa-heart"></i>
+            </a>
+          </div> -->
+          <div class="card-body">
+            <div class="buy d-flex justify-content-between align-items-center">
+              <h4 class="card-title">{{phone.name}}</h4>
+              <a href="#"><i class="material-icons">
+                  more_vert
+                </i>
+
+              </a>
+            </div>
+            <h6 class="card-subtitle mb-2 text-muted">Model: {{phone.model}}</h6>
+            <p class="card-text"> </p>
+            <div class="options d-flex flex-fill">
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <div class="price text-success">
+                <h5 class="mt-4">$ {{phone.price}}</h5>
+              </div>
+              <a href="#" class="btn btn-outline-dark mt-3">Buy</a>
+              <a href="#" class="btn btn-outline-danger mt-3"><i class="material-icons">local_grocery_store</i></a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </body>
