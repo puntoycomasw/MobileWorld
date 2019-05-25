@@ -17,27 +17,18 @@ export class RegisterComponent implements OnInit {
   public email: string = '';
   public password: string = '';
 
-  uploadPercent: Observable<number>;
-  urlImage: Observable<string>;
-
   ngOnInit() {
   }
 
-  onUpload(e) {
-    const id = Math.random().toString(36).substring(2);
-    const file = e.target.files[0];
-    const filePath = `uploads/profile_${id}`;
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();
-  }
   onAddUser() {
     this.authService.registerUser(this.email, this.password).then((res) => {
       this.onLoginRedirect();
-    }).catch(err => console.log('err', err.message));
+    }).catch(/* err => console.log('err', err.message) */res=> this.prueba());
   }
+  prueba(){
+    document.getElementById("error").innerHTML = "The email has already been registered, enter a new one";
 
+  }
   onLoginRedirect(): void {
     this.router.navigate(['']);
   }

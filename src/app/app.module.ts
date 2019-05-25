@@ -1,7 +1,7 @@
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
@@ -42,6 +42,7 @@ import { materialize } from 'rxjs/operators';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NgbModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
