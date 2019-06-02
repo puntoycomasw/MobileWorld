@@ -21,13 +21,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onAddUser() {
+    document.getElementById("error").innerHTML = "";
     this.authService.registerUser(this.email, this.password).then((res) => {
       this.onLoginRedirect();
-    }).catch(/* err => console.log('err', err.message) */res=> this.prueba());
-  }
-  prueba(){
-    document.getElementById("error").innerHTML = "The email has already been registered, enter a new one";
-
+    }).catch(res => document.getElementById("error").innerHTML = "The email has already been registered, enter a new one");
   }
   onLoginRedirect(): void {
     this.router.navigate(['']);
