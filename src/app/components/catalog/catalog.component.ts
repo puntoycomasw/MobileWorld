@@ -14,17 +14,20 @@ export class CatalogComponent implements OnInit {
     this.dataApi.getAllProducts().subscribe(products => {
       /* Carousel.init(); */
       this.products = products;
-     /*  $(document).ready(function () {
-        $('.carousel.carousel-slider').carousel({
-          fullWidth: true,
-          indicators: true
-        });
-      }); */
+      /*  $(document).ready(function () {
+         $('.carousel.carousel-slider').carousel({
+           fullWidth: true,
+           indicators: true
+         });
+       }); */
       /* setTimeout(() => {
         var elems = document.querySelectorAll('.carousel');
         Carousel.init(elems);
       }, 1); */
 
     })
+  }
+  carrito_producto(id: string) {
+    localStorage.setItem("carrito",id);
   }
 }

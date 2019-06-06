@@ -13,8 +13,8 @@ export class ProfileComponent implements OnInit {
   user: UserInterface = {
     name: '',
     email: '',
-    photoUrl: '',
-    roles: {}
+    password:'',
+    /* roles: {} */
   };
 
   public providerId: string = 'null';
@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
       if (user) {
         this.user.name = user.displayName;
         this.user.email = user.email;
-        this.user.photoUrl = user.photoURL;
         this.providerId = user.providerData[0].providerId;
       }
     })

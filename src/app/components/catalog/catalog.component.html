@@ -20,7 +20,7 @@
                     <div class="card-body">
                       <h5 class="card-title">{{phone.name}}</h5>
                       <p class="card-text">{{phone.description}}</p>
-                   
+
                     </div>
                   </div>
                 </div>
@@ -63,18 +63,18 @@
           <!--  -->
           <a href="#"> <img class="card-img" [src]="phone.image" [alt]="phone.name"></a>
           <ngb-accordion #acc="ngbAccordion" class="btn-link">
-              <ngb-panel id="toggle-1" title="Description" >
-                <ng-template ngbPanelContent >
-                  {{phone.description}}
-                </ng-template>
-              </ngb-panel>
-            </ngb-accordion>
+            <ngb-panel id="toggle-1" title="Description">
+              <ng-template ngbPanelContent>
+                {{phone.description}}
+              </ng-template>
+            </ngb-panel>
+          </ngb-accordion>
           <div class="card-body">
             <div class="buy d-flex justify-content-between align-items-center">
               <!-- <h4 class="card-title">{{phone.name}}</h4> -->
-              
-                
-                <h4 class="card-title">{{phone.name}}</h4>
+
+
+              <h4 class="card-title">{{phone.name}}</h4>
               <!-- <div class="accordion" id="accordionExample">
                 <div class="card">
                   <div class="card-header" id="headingOne">
@@ -104,7 +104,7 @@
                 <h5 class="mt-4">$ {{phone.price}}</h5>
               </div>
               <a href="#" class="btn btn-outline-dark mt-3">Buy</a>
-              <a href="#" class="btn btn-outline-danger mt-3"><i class="material-icons">add_shopping_cart</i></a>
+              <a  class="btn btn-outline-danger mt-3" (click)="carrito_producto(phone.id)"><i class="material-icons">add_shopping_cart</i></a>
             </div>
           </div>
         </div>

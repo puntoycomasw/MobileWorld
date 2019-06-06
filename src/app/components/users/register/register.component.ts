@@ -16,13 +16,14 @@ export class RegisterComponent implements OnInit {
 
   public email: string = '';
   public password: string = '';
+  public name: string = '';
 
   ngOnInit() {
   }
 
   onAddUser() {
     document.getElementById("error").innerHTML = "";
-    this.authService.registerUser(this.email, this.password).then((res) => {
+    this.authService.registerUser(this.email, this.name, this.password).then((res) => {
       this.onLoginRedirect();
     }).catch(res => document.getElementById("error").innerHTML = "The email has already been registered, enter a new one");
   }

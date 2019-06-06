@@ -28,7 +28,7 @@ export class DataApiService {
         });
       }));
   }
-
+ 
 
   getAllProductsOffers() {
     this.productsCollection = this.afs.collection('products', ref => ref.where('offer', '==', '1'));
