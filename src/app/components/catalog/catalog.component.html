@@ -47,20 +47,6 @@
     <div class="row">
       <div *ngFor="let phone of products" class="col-12 col-sm-8 col-md-12 col-lg-3 mb-3">
         <div class="card">
-
-          <!--  -->
-          <!-- <div class="dropdown">
-            <a class="btn " data-toggle="dropdown">
-              <i class="material-icons">
-                more_vert
-              </i>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              {{phone.description}}
-            </div>
-          </div> -->
-
-          <!--  -->
           <a href="#"> <img class="card-img" [src]="phone.image" [alt]="phone.name"></a>
           <ngb-accordion #acc="ngbAccordion" class="btn-link">
             <ngb-panel id="toggle-1" title="Description">
@@ -71,28 +57,7 @@
           </ngb-accordion>
           <div class="card-body">
             <div class="buy d-flex justify-content-between align-items-center">
-              <!-- <h4 class="card-title">{{phone.name}}</h4> -->
-
-
               <h4 class="card-title">{{phone.name}}</h4>
-              <!-- <div class="accordion" id="accordionExample">
-                <div class="card">
-                  <div class="card-header" id="headingOne">
-                    <h2 class="mb-0">
-                      <button class="btn btn-link" type="button" id='{{phone.id}}' data-toggle="collapse" data-target='{{phone.id}}'
-                        aria-expanded="true" aria-controls="collapseOne">
-                        Collapsible Group Item #1
-                      </button>
-                    </h2>
-                  </div>
-
-                  <div id='{{phone.id}}'class="collapse" aria-labelledby="headingOne"
-                    data-parent="#accordionExample">
-                    <div class="card-body">{{phone.description}}
-                    </div>
-                  </div>
-                </div>
-                </div> -->
             </div>
             <h6 class="card-subtitle mb-2 text-muted">Model: {{phone.model}}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Quantity Available: {{phone.quantity}}</h6>
@@ -104,7 +69,8 @@
                 <h5 class="mt-4">$ {{phone.price}}</h5>
               </div>
               <a href="#" class="btn btn-outline-dark mt-3">Buy</a>
-              <a  class="btn btn-outline-danger mt-3" (click)="carrito_producto(phone.id)"><i class="material-icons">add_shopping_cart</i></a>
+              <a class="btn btn-outline-danger mt-3" (click)="carrito_producto(phone.id)"><i
+                  class="material-icons">add_shopping_cart</i></a>
             </div>
           </div>
         </div>
