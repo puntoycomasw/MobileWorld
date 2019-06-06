@@ -1,4 +1,3 @@
-import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { ProfileComponent } from './components/users/profile/profile.component';
 import { LoginComponent } from './components/users/login/login.component';
@@ -18,7 +17,6 @@ const routes: Routes = [
   { path: 'user/list-products', component: ListProductsComponent },
   { path: 'user/shoppingCart', component: ShoppingCartComponent },
   { path: 'modal', component: ModalComponent },
-  { path: 'details-product', component: DetailsProductComponent },
   { path: '**', component: Page404Component }
 ];
 

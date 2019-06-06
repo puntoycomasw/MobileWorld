@@ -22,8 +22,6 @@ import { Page404Component } from './components/page404/page404.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { DetailsProductComponent } from './components/details-product/details-product.component';
-import { materialize } from 'rxjs/operators';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 @NgModule({
   declarations: [
@@ -37,7 +35,6 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     FooterComponent,
     ListProductsComponent,
     ModalComponent,
-    DetailsProductComponent,
     ShoppingCartComponent
   ],
   imports: [
