@@ -8,6 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/users/register/register.component';
 import { Page404Component } from './components/page404/page404.component';
 import { ModalComponent } from './components/modal/modal.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'user/register', component: RegisterComponent },
   { path: 'user/profile', component: ProfileComponent },
   { path: 'user/list-products', component: ListProductsComponent },
+  { path: 'user/shoppingCart', component: ShoppingCartComponent },
   { path: 'modal', component: ModalComponent },
   { path: 'details-product', component: DetailsProductComponent },
   { path: '**', component: Page404Component }

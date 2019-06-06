@@ -24,6 +24,7 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { ModalComponent } from './components/modal/modal.component';
 import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { materialize } from 'rxjs/operators';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { materialize } from 'rxjs/operators';
     FooterComponent,
     ListProductsComponent,
     ModalComponent,
-    DetailsProductComponent
+    DetailsProductComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
