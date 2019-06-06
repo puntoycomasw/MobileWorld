@@ -1,3 +1,4 @@
+import { ProductInterface } from './../shared/models/product';
 import { Observable } from 'rxjs/internal/Observable';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -65,12 +66,10 @@ export class AuthService {
     return userRef.set(data, { merge: true })
   }
 
-  updateUser(user: UserInterface, uid: string) {
+  updateUser(user: UserInterface, product: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.id}`);
     const data: UserInterface = {
-      email: user.email = "oswaldo1@prueba.com",
-      name: user.name = "oswaldo",
-      car: user.car = {},
+      car : user.car=product
     }
     return userRef.set(data, { merge: true })
   }
