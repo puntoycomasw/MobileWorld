@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   
   onLogout() {
     this.authService.logoutUser();
+   var dwa = document.getElementById
   }
   onLoginRedirect(): void {
     this.router.navigate(['']);

@@ -1,20 +1,30 @@
+import { Observable } from 'rxjs/internal/Observable';
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
-import { ProductInterface } from '../shared/models/product'
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserInterface } from '../shared/models/user';
-import { Observable } from 'rxjs/internal/Observable';
+import { AngularFireDatabase } from '@angular/fire/database/database';
 @Injectable({
   providedIn: 'root'
 })
+/* export class Item {
+  body: string;
+} */
 export class AuthService {
-  name: string;
-  constructor(public afsAuth: AngularFireAuth, public afs: AngularFirestore) {
+ /*  items: Observable<Item[]> = null; */
+  userId: string;
 
+  name: string;
+  constructor(public afsAuth: AngularFireAuth, public afs: AngularFirestore, public db: AngularFireDatabase) {
+   /*  this.afsAuth.authState.subscribe(user => {
+      if (user)
+        this.userId = user.uid;
+        console.log(this.userId);
+        console.log(user.uid);
+    }) */
   }
-  public product: Observable<ProductInterface>;
   registerUser(email: string, name: string, pass: string) {
     this.name = name;
     return new Promise((resolve, reject) => {
@@ -49,26 +59,27 @@ export class AuthService {
 
       email: user.email,
       name: user.name = this.name,
-      car: user.car = {
-        type: "celular",
-        name: "telefono",
-        brand: "sony",
-        model: "x1",
-        image: "https://static.fnac-static.com/multimedia/Images/ES/NR/d2/15/0d/857554/1540-4.jpg",
-        description: "wjdkwa",
-        price: 1,
-        quantity: 1,
-        offer: "no",
-        id: "vacio",
-        userUid: "vacio"
-      }
-
-
+      car: user.car = {},
     }
     return userRef.set(data, { merge: true })
   }
+  /* public shopCar(id: string, user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: UserInterface = {
+      id: user.uid,
 
-  /*  isUserAdmin(userUid) {
-     return this.afs.doc<UserInterface>(`users/${userUid}`).valueChanges();
-   } */
+      email: user.email,
+      name: user.name = this.name,
+      car: user.car = {},
+    }
+    return userRef.set(data, { merge: true })
+  } */
+  /* getItemsList(): Observable<Item[]>{
+    if (!this.userId)return;
+    this.items=this.db.list(`items/${this.userId}`);
+    return this.items;
+  }
+  createItem(item:Item){
+    this.items.push(item);
+  } */
 }

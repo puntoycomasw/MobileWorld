@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   user: UserInterface = {
     name: '',
     email: '',
-    car:{}
+    car:[]
   };
 
   public providerId: string = 'null';
@@ -35,7 +35,7 @@ export class ShoppingCartComponent implements OnInit {
           id: "vacio",
           userUid: "vacio"
         }; */
-        console.log(this.user.car.name);
+      
         this.user.name = user.displayName;
         this.user.email = user.email;
         this.providerId = user.providerData[0].providerId;
