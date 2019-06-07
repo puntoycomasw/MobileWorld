@@ -1,7 +1,6 @@
 import { DataApiService } from '../../services/data-api.service';
-import { UserInterface } from './../../shared/models/user';
-import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -28,13 +27,11 @@ export class ShoppingCartComponent implements OnInit {
             if (user.id == this.uid) {
               this.user = user;
               this.carrito = user.car;
-
               this.dataApi.getAllProducts().subscribe(products => {
                 this.products = products;
                 for (let i = 0; i < this.carrito.length; i++) {
                   for (let j = 0; j < this.products.length; j++) {
                     if (this.carrito[i] == this.products[j].id) {
-                      console.log("cuatro");
                       this.carV.push(this.products[j]);
                     }
                   }

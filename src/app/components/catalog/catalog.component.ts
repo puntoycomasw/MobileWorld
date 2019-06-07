@@ -14,14 +14,12 @@ export class CatalogComponent implements OnInit {
   public uid = "";
   public user;
   public carrito = [];
+  public history = [];
 
   ngOnInit() {
     this.dataApi.getAllProducts().subscribe(products => {
-
       this.products = products;
-
     });
-
     this.auth.isAuth().subscribe(auth => {
       if (auth) {
         this.uid = auth.uid;
@@ -30,20 +28,25 @@ export class CatalogComponent implements OnInit {
           this.users.forEach(user => {
             if (user.id == this.uid) {
               this.user = user;
-              this.carrito = user.car
+              this.carrito = user.car;
+              this.history = user.history;
             }
           });
         })
       }
     });
   }
-  carrito_producto(phone: string) {
-    localStorage.setItem("carrito", phone);
-    var x = localStorage.getItem("carrito");
+  addToCar(idPhone: string) {
+    localStorage.setItem("Product", idPhone);
+    var x = localStorage.getItem("Product");
     this.carrito.push(x);
-    console.log(this.carrito);
-
-    this.auth.updateUser(this.user, this.carrito);
+    this.auth.addToCar(this.user, this.carrito);
+  }
+  buyProduct(idPhone: string) {
+    localStorage.setItem("Product", idPhone);
+    var x = localStorage.getItem("Product");
+    this.history.push(x);
+    this.auth.buyProduct(this.user, this.history);
   }
 
 }
