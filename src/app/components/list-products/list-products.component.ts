@@ -1,10 +1,7 @@
 import { ProductInterface } from './../../shared/models/product';
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
-import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UserInterface } from '../../shared/models/user';
 
 @Component({
   selector: 'app-list-products',
@@ -45,7 +42,6 @@ export class ListProductsComponent implements OnInit {
   }
 
   onPreUpdateProduct(product: ProductInterface) {
-    console.log('PRODUCT', product);
     this.dataApi.selectedProduct = Object.assign({}, product);
   }
 }

@@ -1,14 +1,14 @@
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
-import {AngularFireModule} from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment.prod';
 import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
@@ -24,6 +24,7 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { ModalComponent } from './components/modal/modal.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
+import { NotifComponent } from './components/notif/notif.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
     ListProductsComponent,
     ModalComponent,
     ShoppingCartComponent,
-    ShoppingComponent
-
+    ShoppingComponent,
+    NotifComponent,
   ],
   imports: [
     BrowserModule,

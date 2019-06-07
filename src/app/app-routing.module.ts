@@ -9,6 +9,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
+import { NotifComponent } from './components/notif/notif.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'user/list-products', component: ListProductsComponent },
   { path: 'user/shoppingCart', component: ShoppingCartComponent },
   { path: 'modal', component: ModalComponent },
+  { path: 'notif', component: NotifComponent },
   { path: '**', component: Page404Component }
 ];
 
