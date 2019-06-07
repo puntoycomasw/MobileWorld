@@ -35,7 +35,6 @@
           <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
           <i class="material-icons btn-outline-dark">
             arrow_forward_ios </i>
           <span class="sr-only">Next</span>
@@ -68,8 +67,8 @@
               <div class="price text-success">
                 <h5 class="mt-4">$ {{phone.price}}</h5>
               </div>
-              <a href="#" class="btn btn-outline-dark mt-3">Buy</a>
-              <a class="btn btn-outline-danger mt-3" (click)="carrito_producto(phone.id)"><i
+              <a class="btn btn-outline-dark mt-3" (click)="buyProduct(phone.id)">Buy</a>
+              <a class="btn btn-outline-danger mt-3" (click)="addToCar(phone.id)"><i
                   class="material-icons">add_shopping_cart</i></a>
             </div>
           </div>
