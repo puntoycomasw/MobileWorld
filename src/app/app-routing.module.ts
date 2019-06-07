@@ -8,12 +8,14 @@ import { RegisterComponent } from './components/users/register/register.componen
 import { Page404Component } from './components/page404/page404.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
   { path: 'user/login', component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },
   { path: 'user/profile', component: ProfileComponent },
+  { path: 'user/shopping', component: ShoppingComponent },
   { path: 'user/list-products', component: ListProductsComponent },
   { path: 'user/shoppingCart', component: ShoppingCartComponent },
   { path: 'modal', component: ModalComponent },
