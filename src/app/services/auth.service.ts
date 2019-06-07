@@ -38,6 +38,7 @@ export class AuthService {
     });
   }
   loginEmailUser(email: string, pass: string) {
+    localStorage.setItem("logueado", "true");
     return new Promise((resolve, reject) => {
       this.afsAuth.auth.signInWithEmailAndPassword(email, pass)
         .then(userData => resolve(userData),
@@ -47,9 +48,11 @@ export class AuthService {
 
   logoutUser() {
     return this.afsAuth.auth.signOut();
+
   }
 
   isAuth() {
+
     return this.afsAuth.authState.pipe(map(auth => auth));
   }
 
