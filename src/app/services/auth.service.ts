@@ -1,17 +1,35 @@
+import { ProductInterface } from './../shared/models/product';
+import { Observable } from 'rxjs/internal/Observable';
 import { Injectable } from '@angular/core';
-
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
-
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { UserInterface } from '../shared/models/user';
+import { UserInterface } from '../shared/models/user'
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database/database';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  public productsCollection: AngularFirestoreCollection<UserInterface>;
+  public users: Observable<UserInterface[]>;
+  public userDoc: AngularFirestoreDocument<UserInterface>;
+  name: string;
+  constructor(public afsAuth: AngularFireAuth, public afs: AngularFirestore, public db: AngularFireDatabase) {
+  }
+  getAllUsers() {
+    this.productsCollection = this.afs.collection<UserInterface>('users');
+    return this.users = this.productsCollection.snapshotChanges()
+      .pipe(map(changes => {
+        return changes.map(action => {
+          const data = action.payload.doc.data() as UserInterface;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+      }));
+  }
 
-  constructor(public afsAuth: AngularFireAuth, public afs: AngularFirestore) { }
-  registerUser(email: string, pass: string) {
+  registerUser(email: string, name: string, pass: string) {
+    this.name = name;
     return new Promise((resolve, reject) => {
       this.afsAuth.auth.createUserWithEmailAndPassword(email, pass)
         .then(userData => {
@@ -20,12 +38,11 @@ export class AuthService {
         }).catch(err => console.log(reject(err)))
     });
   }
-
   loginEmailUser(email: string, pass: string) {
     return new Promise((resolve, reject) => {
       this.afsAuth.auth.signInWithEmailAndPassword(email, pass)
         .then(userData => resolve(userData),
-        err => reject(err));
+          err => reject(err));
     });
   }
 
@@ -41,15 +58,19 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: UserInterface = {
       id: user.uid,
+
       email: user.email,
-      roles: {
-        editor: true
-      }
+      name: user.name = this.name,
+      car: user.car = {},
     }
     return userRef.set(data, { merge: true })
   }
 
-  isUserAdmin(userUid) {
-    return this.afs.doc<UserInterface>(`users/${userUid}`).valueChanges();
+  updateUser(user: UserInterface, product: any) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.id}`);
+    const data: UserInterface = {
+      car : user.car=product
+    }
+    return userRef.set(data, { merge: true })
   }
 }

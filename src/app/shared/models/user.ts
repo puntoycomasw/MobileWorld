@@ -1,3 +1,6 @@
+import { ProductInterface } from './product';
+import { Observable } from 'rxjs';
+
 export interface Roles {
   editor?: boolean;
   admin?: boolean;
@@ -7,6 +10,6 @@ export interface UserInterface {
   name?: string;
   email?: string;
   password?: string;
-  photoUrl?: string;
-  roles: Roles;
+  car?:{};
+  /* roles?: Roles; */
 }

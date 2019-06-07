@@ -9,23 +9,30 @@ import { UserInterface } from '../../../shared/models/user';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public auth: AuthService) { }
   user: UserInterface = {
     name: '',
-    email: '',
-    photoUrl: '',
-    roles: {}
+    email: ''
   };
+  public users = [];
+  public uid = "";
 
-  public providerId: string = 'null';
   ngOnInit() {
-    this.authService.isAuth().subscribe(user => {
-      if (user) {
-        this.user.name = user.displayName;
-        this.user.email = user.email;
-        this.user.photoUrl = user.photoURL;
-        this.providerId = user.providerData[0].providerId;
+    this.auth.isAuth().subscribe(auth => {
+      if (auth) {
+        this.uid = auth.uid;
+        this.auth.getAllUsers().subscribe(users => {
+          this.users = users;
+          this.users.forEach(element => {
+            if (element.id == this.uid) {
+              this.user.name = element.name;
+              this.user.email = element.email;
+            }
+
+          });
+        })
       }
-    })
+    });
+
   }
 }

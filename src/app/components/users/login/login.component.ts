@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   constructor(public afAuth: AngularFireAuth, public router: Router, public authService: AuthService) { }
   public email: string = '';
   public password: string = '';
+  public name: string = '';
   ngOnInit() {
     console.log("imprimido");
   }
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
   
   onLogout() {
     this.authService.logoutUser();
+   var dwa = document.getElementById
   }
   onLoginRedirect(): void {
     this.router.navigate(['']);

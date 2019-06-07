@@ -27,10 +27,6 @@ export class ListProductsComponent implements OnInit {
     this.authService.isAuth().subscribe(auth => {
       if (auth) {
         this.userUid = auth.uid;
-        this.authService.isUserAdmin(this.userUid).subscribe(userRole => {
-          this.isAdmin = Object.assign({}, userRole.roles).hasOwnProperty('admin');
-          // this.isAdmin = true;
-        })
       }
     })
   }

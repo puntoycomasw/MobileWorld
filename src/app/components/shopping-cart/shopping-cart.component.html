@@ -1,40 +1,30 @@
 <section class="row mt-5">
   <div class="col">
-    <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalProduct">New
-      Product</button>
+     <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalProduct">Continue Buying</button> 
     <table class="table table-hover">
-      <thead>
+      <thead> 
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Type</th>
           <th scope="col">Name</th>
           <th scope="col">Brand</th>
           <th scope="col">Model</th>
           <th scope="col">Description</th>
           <th scope="col">Price</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Offer</th>
           <th scope="col">&nbsp;</th>
-          <th scope="col">&nbsp;</th>
+        
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products; index as i">
-          <th scope="row">{{i+1}}</th>
-          <td>{{product.type}}</td>
+        <tr *ngFor="let product of carV; index as i">
+          <th scope="row">{{i+1}}</th>         
           <td>{{product.name}}</td>
           <td>{{product.brand}}</td>
           <td>{{product.model}}</td>
           <td>{{product.description}}</td>
           <td>{{product.price}}</td>
-          <td>{{product.quantity}}</td>
-          <td>{{product.offer == 1 ? 'Yes': 'No'}}</td>
           <td>
             <button class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"
-              (click)="onPreUpdateProduct(product)">Update</button>
-          </td>
-          <td>
-            <button class="btn btn-danger" (click)="onDeleteProduct(product.id)">Delete</button>
+              (click)="onPreUpdateProduct(product)">Update</button><!-- comprar -->
           </td>
         </tr>
       </tbody>
