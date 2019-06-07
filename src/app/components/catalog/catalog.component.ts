@@ -15,18 +15,18 @@ export class CatalogComponent implements OnInit {
   public user;
   public carrito = [];
   public history = [];
-
+  public userUid: string = null;
   ngOnInit() {
     this.dataApi.getAllProducts().subscribe(products => {
       this.products = products;
     });
     this.auth.isAuth().subscribe(auth => {
       if (auth) {
-        this.uid = auth.uid;
+        this.userUid = auth.uid;
         this.auth.getAllUsers().subscribe(users => {
           this.users = users;
           this.users.forEach(user => {
-            if (user.id == this.uid) {
+            if (user.id == this.userUid) {
               this.user = user;
               this.carrito = user.car;
               this.history = user.history;
@@ -47,6 +47,9 @@ export class CatalogComponent implements OnInit {
     var x = localStorage.getItem("Product");
     this.history.push(x);
     this.auth.buyProduct(this.user, this.history);
+  }
+  onPreUpdateProduct(product: ProductInterface) {
+    this.dataApi.selectedProduct = Object.assign({}, product);
   }
 
 }

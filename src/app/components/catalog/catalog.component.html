@@ -1,79 +1,87 @@
-<body>
-  <div class="container">
-    <div class="">
-      <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active mb-3">
-            <img class="d-block w-100"
-              src="http://www.commerce.wa.gov/wp-content/uploads/2018/09/MobileWorldCongress.jpg">
-          </div>
+<section class="row mt-5">
+  <div class="col">
 
-          <div class="carousel-item" *ngFor="let phone of products">
-            <a>
-              <div class="card mb-3">
-                <!-- Espacio entre filas -->
-                <div class="row no-gutters">
-                  <div class="col-md-5">
-                    <img [src]="phone.image" class="card-img" [alt]="phone.name"> <!-- Zise 400px x 300px -->
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card-body">
-                      <h5 class="card-title">{{phone.name}}</h5>
-                      <p class="card-text">{{phone.description}}</p>
+    <body>
+      <div class="container">
+        <div class="">
+          <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active mb-3">
+                <img class="d-block w-100"
+                  src="http://www.commerce.wa.gov/wp-content/uploads/2018/09/MobileWorldCongress.jpg">
+              </div>
 
+              <div class="carousel-item" *ngFor="let product of products">
+                <a>
+                  <div class="card mb-3">
+                    <!-- Espacio entre filas -->
+                    <div class="row no-gutters">
+                      <div class="col-md-5">
+                        <img [src]="product.image" class="card-img" [alt]="product.name"> <!-- Zise 400px x 300px -->
+                      </div>
+                      <div class="col-md-6">
+                        <div class="card-body">
+                          <h5 class="card-title">{{product.name}}</h5>
+                          <p class="card-text">{{product.description}}</p>
+
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <i class="material-icons btn-outline-dark">
+                arrow_back_ios
+              </i>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <i class="material-icons btn-outline-dark">
+                arrow_forward_ios </i>
+              <span class="sr-only">Next</span>
             </a>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <i class="material-icons btn-outline-dark">
-            arrow_back_ios
-          </i>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <i class="material-icons btn-outline-dark">
-            arrow_forward_ios </i>
-          <span class="sr-only">Next</span>
-        </a>
       </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div *ngFor="let phone of products" class="col-12 col-sm-8 col-md-12 col-lg-3 mb-3">
-        <div class="card">
-          <a href="#"> <img class="card-img" [src]="phone.image" [alt]="phone.name"></a>
-          <ngb-accordion #acc="ngbAccordion" class="btn-link">
-            <ngb-panel id="toggle-1" title="Description">
-              <ng-template ngbPanelContent>
-                {{phone.description}}
-              </ng-template>
-            </ngb-panel>
-          </ngb-accordion>
-          <div class="card-body">
-            <div class="buy d-flex justify-content-between align-items-center">
-              <h4 class="card-title">{{phone.name}}</h4>
-            </div>
-            <h6 class="card-subtitle mb-2 text-muted">Model: {{phone.model}}</h6>
-            <h6 class="card-subtitle mb-2 text-muted">Quantity Available: {{phone.quantity}}</h6>
-            <p class="card-text"> </p>
-            <div class="options d-flex flex-fill">
-            </div>
-            <div class="buy d-flex justify-content-between align-items-center">
-              <div class="price text-success">
-                <h5 class="mt-4">$ {{phone.price}}</h5>
+      <div class="container">
+        <div class="row">
+          <div *ngFor="let product of products" class="col-12 col-sm-8 col-md-12 col-lg-3 mb-3">
+            <div class="card">
+              <a href="#"> <img class="card-img" [src]="product.image" [alt]="product.name"></a>
+              <ngb-accordion #acc="ngbAccordion" class="btn-link">
+                <ngb-panel id="toggle-1" title="Description">
+                  <ng-template ngbPanelContent>
+                    {{product.description}}
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+              <div class="card-body">
+                <div class="buy d-flex justify-content-between align-items-center">
+                  <h4 class="card-title">{{product.name}}</h4>
+                </div>
+                <h6 class="card-subtitle mb-2 text-muted">Model: {{product.model}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Quantity Available: {{product.quantity}}</h6>
+                <p class="card-text"> </p>
+                <div class="options d-flex flex-fill">
+                </div>
+                <div class="buy d-flex justify-content-between align-items-center">
+                  <div class="price text-success">
+                    <h5 class="mt-4">$ {{product.price}}</h5>
+                  </div>
+                  <a class="btn btn-outline-dark mt-3" data-toggle="modal" data-target="#notif">Buy</a>
+                  <a class="btn btn-outline-danger mt-3" (click)="addToCar(product.id)"><i
+                      class="material-icons">add_shopping_cart</i></a>
+                </div>
               </div>
-              <a class="btn btn-outline-dark mt-3" (click)="buyProduct(phone.id)">Buy</a>
-              <a class="btn btn-outline-danger mt-3" (click)="addToCar(phone.id)"><i
-                  class="material-icons">add_shopping_cart</i></a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </body>
   </div>
-</body>
+</section>
+<app-notif [userUid]="userUid"></app-notif>
+
+<!-- (click)="buyProduct(product.id)" -->

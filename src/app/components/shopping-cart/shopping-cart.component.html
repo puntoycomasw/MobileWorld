@@ -1,6 +1,6 @@
 <section class="row mt-5">
   <div class="col">
-     <button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modalProduct">Continue Buying</button> 
+     
     <table class="table table-hover">
       <thead> 
         <tr>
@@ -23,12 +23,10 @@
           <td>{{product.description}}</td>
           <td>{{product.price}}</td>
           <td>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modalProduct"
-              (click)="onPreUpdateProduct(product)">Update</button><!-- comprar -->
+            <button class="btn btn-primary" (click)="onPreUpdateProduct(product)">Update</button><!-- comprar -->
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
-<app-modal [userUid]="userUid"></app-modal>
