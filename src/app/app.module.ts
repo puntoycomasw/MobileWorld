@@ -24,6 +24,7 @@ import { ListProductsComponent } from './components/list-products/list-products.
 import { ModalComponent } from './components/modal/modal.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
     ModalComponent,
     ShoppingCartComponent,
     ShoppingComponent
+
   ],
   imports: [
     BrowserModule,

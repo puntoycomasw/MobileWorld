@@ -1,4 +1,5 @@
 import { DataApiService } from '../../services/data-api.service';
+import { UserInterface } from './../../shared/models/user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
