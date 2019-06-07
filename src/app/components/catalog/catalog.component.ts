@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 import { AuthService } from '../../services/auth.service';
 import { ProductInterface } from '../../shared/models/product'
+import { DISABLED } from '@angular/forms/src/model';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
@@ -15,8 +16,10 @@ export class CatalogComponent implements OnInit {
   public user;
   public carrito = [];
   public history = [];
+  public logueado = null;
   public userUid: string = null;
   ngOnInit() {
+    this.logueado = localStorage.getItem("logueado");
     this.dataApi.getAllProducts().subscribe(products => {
       this.products = products;
     });
@@ -51,5 +54,4 @@ export class CatalogComponent implements OnInit {
   onPreUpdateProduct(product: ProductInterface) {
     this.dataApi.selectedProduct = Object.assign({}, product);
   }
-
 }

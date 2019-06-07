@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogout() {
+    localStorage.clear();
     this.afsAuth.auth.signOut();
   }
 

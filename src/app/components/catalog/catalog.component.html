@@ -1,55 +1,50 @@
 <section class="row mt-5">
   <div class="col">
-
     <body>
       <div class="container">
-        <div class="">
-          <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active mb-3">
-                <img class="d-block w-100"
-                  src="http://www.commerce.wa.gov/wp-content/uploads/2018/09/MobileWorldCongress.jpg">
-              </div>
-
-              <div class="carousel-item" *ngFor="let product of products">
-                <a>
-                  <div class="card mb-3">
-                    <!-- Espacio entre filas -->
-                    <div class="row no-gutters">
-                      <div class="col-md-5">
-                        <img [src]="product.image" class="card-img" [alt]="product.name"> <!-- Zise 400px x 300px -->
-                      </div>
-                      <div class="col-md-6">
-                        <div class="card-body">
-                          <h5 class="card-title">{{product.name}}</h5>
-                          <p class="card-text">{{product.description}}</p>
-
-                        </div>
+        <div id="carouselExampleControls" class="carousel slide carousel-fade" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active mb-3">
+              <img class="d-block w-100"
+                src="http://www.commerce.wa.gov/wp-content/uploads/2018/09/MobileWorldCongress.jpg">
+            </div>
+            <div class="carousel-item" *ngFor="let product of products">
+              <a>
+                <div class="card mb-3">
+                  <!-- Espacio entre filas -->
+                  <div class="row no-gutters">
+                    <div class="col-md-5">
+                      <img [src]="product.image" class="card-img" [alt]="product.name"><!-- 400 300 -->
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text">{{product.description}}</p>
                       </div>
                     </div>
                   </div>
-                </a>
-              </div>
+                </div>
+              </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <i class="material-icons btn-outline-dark">
-                arrow_back_ios
-              </i>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <i class="material-icons btn-outline-dark">
-                arrow_forward_ios </i>
-              <span class="sr-only">Next</span>
-            </a>
           </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <i class="material-icons btn-outline-dark">
+              arrow_back_ios
+            </i>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <i class="material-icons btn-outline-dark">
+              arrow_forward_ios </i>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
       <div class="container">
         <div class="row">
           <div *ngFor="let product of products" class="col-12 col-sm-8 col-md-12 col-lg-3 mb-3">
             <div class="card">
-              <a href="#"> <img class="card-img" [src]="product.image" [alt]="product.name"></a>
+              <img class="card-img" [src]="product.image" [alt]="product.name">
               <ngb-accordion #acc="ngbAccordion" class="btn-link">
                 <ngb-panel id="toggle-1" title="Description">
                   <ng-template ngbPanelContent>
@@ -70,9 +65,10 @@
                   <div class="price text-success">
                     <h5 class="mt-4">$ {{product.price}}</h5>
                   </div>
-                  <a class="btn btn-outline-dark mt-3" data-toggle="modal" data-target="#notif">Buy</a>
-                  <a class="btn btn-outline-danger mt-3" (click)="addToCar(product.id)"><i
-                      class="material-icons">add_shopping_cart</i></a>
+                  <button class="btn btn-outline-dark mt-3" name="buy_button" data-toggle="modal" data-target="#notif"
+                    [disabled]="!logueado" (click)="buyProduct(product.id)">Buy</button>
+                  <button class="btn btn-outline-danger mt-3" [disabled]="!logueado" (click)="addToCar(product.id)"><i
+                      class="material-icons">add_shopping_cart</i></button>
                 </div>
               </div>
             </div>
@@ -83,5 +79,3 @@
   </div>
 </section>
 <app-notif [userUid]="userUid"></app-notif>
-
-<!-- (click)="buyProduct(product.id)" -->
