@@ -25,6 +25,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { NotifComponent } from './components/notif/notif.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NotifComponent } from './components/notif/notif.component';
     ShoppingCartComponent,
     ShoppingComponent,
     NotifComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

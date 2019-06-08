@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let product of products" class="col-12 col-sm-8 col-md-12 col-lg-3 mb-3">
+      <div class="card">
+        <img class="card-img" [src]="product.image" [alt]="product.name">
+        <ngb-accordion #acc="ngbAccordion" class="btn-link">
+          <ngb-panel id="toggle-1" title="Description">
+            <ng-template ngbPanelContent>
+              {{product.description}}
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+        <div class="card-body">
+          <div class="buy d-flex justify-content-between align-items-center">
+            <h4 class="card-title">{{product.name}}</h4>
+          </div>
+          <h6 class="card-subtitle mb-2 text-muted">Model: {{product.model}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Quantity Available: {{product.quantity}}</h6>
+          <p class="card-text"> </p>
+          <div class="options d-flex flex-fill">
+          </div>
+          <div class="buy d-flex justify-content-between align-items-center">
+            <div class="price text-success">
+              <h5 class="mt-4">$ {{product.price}}</h5>
+            </div>
+            <button class="btn btn-outline-dark mt-3" name="buy_button" data-toggle="modal" data-target="#notif"
+              [disabled]="!logueado" (click)="buyProduct(product.id)">Buy</button>
+            <button class="btn btn-outline-danger mt-3" [disabled]="!logueado" (click)="addToCar(product.id)"><i
+                class="material-icons">add_shopping_cart</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-notif></app-notif>
