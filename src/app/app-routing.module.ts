@@ -10,6 +10,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ShoppingComponent } from './components/shopping/shopping.component';
 import { NotifComponent } from './components/notif/notif.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   { path: '', component: CatalogComponent },
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'user/shoppingCart', component: ShoppingCartComponent },
   { path: 'modal', component: ModalComponent },
   { path: 'notif', component: NotifComponent },
-  { path: '**', component: Page404Component }
+  { path: 'search', component: SearchComponent },
+  { path: '**', component: Page404Component },
+
 ];
 
 @NgModule({

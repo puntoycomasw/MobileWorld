@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 import { AuthService } from '../../services/auth.service';
 @Component({
-  selector: 'app-catalog',
-  templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
 })
-export class CatalogComponent implements OnInit {
+export class SearchComponent implements OnInit {
+
   constructor(private dataApi: DataApiService, public auth: AuthService) { }
   public products = [];
   public users = [];
@@ -49,4 +50,5 @@ export class CatalogComponent implements OnInit {
     this.history.push(x);
     this.auth.buyProduct(this.user, this.history);
   }
+
 }

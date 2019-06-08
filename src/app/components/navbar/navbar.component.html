@@ -1,21 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
-    <!-- <ul class="navbar-nav mr-0">
-      <li class="menu-nav dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          <i class="material-icons btn-light">menu</i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item">Price</a>
-          <a class="dropdown-item">Brand</a>
-          <a class="dropdown-item">Name</a>
-          <a class="dropdown-item">Design</a>
-          <a class="dropdown-item">Type Product</a>
-        </div>
-      </li>
-    </ul> -->
-    <a class="navbar-brand" href=""><img src="assets/logoMW.png"></a>
+    <a class="navbar-brand" (click)="home()"><img src="assets/logoMW.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -33,11 +18,8 @@
         </li>
       </ul>
       <ul class="navbar-nav mr-0">
-        <form class="form-inline mt-2 mt-md-0">
+        <form class="form-inline mt-2 mt-md-0" #formNavbar="ngForm" (ngSubmit)="imprimir()">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="material-icons">
-              search
-            </i></button>
         </form>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -49,14 +31,14 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="user/login" *ngIf="!isLogged">Log In</a>
             <a class="dropdown-item" href="user/register" *ngIf="!isLogged">Sign Up</a>
-            <a class="dropdown-item" href="user/profile" *ngIf="isLogged">Profile</a>
-            <a class="dropdown-item" href="user/list-products" *ngIf="isLogged">List Products</a>
-            <a class="dropdown-item" href="user/shopping" *ngIf="isLogged">Shopping</a>
+            <a class="dropdown-item" (click)="profile()" *ngIf="isLogged">Profile</a>
+            <a class="dropdown-item" (click)="lisP()" *ngIf="isLogged">List Products</a>
+            <a class="dropdown-item" (click)="shop()" *ngIf="isLogged">Shopping</a>
             <a class="dropdown-item" href="" *ngIf="isLogged" (click)="onLogout()">Log Out</a>
           </div>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="user/shoppingCart" *ngIf="isLogged"><i class="material-icons">
+          <a class="btn" (click)="shopC()"><i class="material-icons">
               local_grocery_store
             </i></a>
         </li>
