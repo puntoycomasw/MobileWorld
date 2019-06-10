@@ -26,6 +26,11 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
+  imprimir() {
+    var unit = (<HTMLInputElement>document.getElementById("entrada")).value;
+    console.log(unit);
+  }
+
   onLogout() {
     localStorage.clear();
     this.afsAuth.auth.signOut();
