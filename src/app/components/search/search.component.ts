@@ -1,6 +1,8 @@
+import { GraphService } from './../../services/graph.service';
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -8,7 +10,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SearchComponent implements OnInit {
 
-  constructor(private dataApi: DataApiService, public auth: AuthService) { }
+  constructor(private dataApi: DataApiService, public auth: AuthService, public graph: GraphService) { }
+
   public products = [];
   public users = [];
   public uid = "";
@@ -19,9 +22,8 @@ export class SearchComponent implements OnInit {
   public userUid: string = null;
   ngOnInit() {
     this.logueado = localStorage.getItem("logueado");
-    this.dataApi.getAllProducts().subscribe(products => {
-      this.products = products;
-    });
+    this.products = this.graph.getBuscados();
+    //console.log(this.products.length);
     this.auth.isAuth().subscribe(auth => {
       if (auth) {
         this.userUid = auth.uid;
@@ -37,6 +39,7 @@ export class SearchComponent implements OnInit {
         })
       }
     });
+
   }
   addToCar(idPhone: string) {
     localStorage.setItem("Product", idPhone);
