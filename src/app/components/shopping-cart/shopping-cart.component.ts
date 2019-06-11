@@ -16,7 +16,7 @@ export class ShoppingCartComponent implements OnInit {
   public users = [];
   public user;
   public carrito = [];
-
+  public history = [];
   ngOnInit() {
     this.auth.isAuth().subscribe(auth => {
       if (auth) {
@@ -27,6 +27,7 @@ export class ShoppingCartComponent implements OnInit {
             if (user.id == this.uid) {
               this.user = user;
               this.carrito = user.car;
+              this.history = user.history;
               this.dataApi.getAllProducts().subscribe(products => {
                 this.products = products;
                 for (let i = 0; i < this.carrito.length; i++) {
@@ -42,5 +43,11 @@ export class ShoppingCartComponent implements OnInit {
         })
       }
     })
+  }
+  buyProduct(idPhone: string) {
+    localStorage.setItem("Product", idPhone);
+    var x = localStorage.getItem("Product");
+    this.history.push(x);
+    this.auth.buyProduct(this.user, this.history);
   }
 }

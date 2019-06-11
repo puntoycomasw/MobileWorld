@@ -28,6 +28,20 @@ export class DataApiService {
         });
       }));
   }
+
+  getOneProduct(name: string) {
+    this.productDoc = this.afs.doc<ProductInterface>(`products/${name}`);
+    return this.product = this.productDoc.snapshotChanges().pipe(map(action => {
+      if (action.payload.exists === false) {
+        return null;
+      } else {
+        const data = action.payload.data() as ProductInterface;
+        data.id = action.payload.id;
+        return data;
+      }
+    }));
+  }
+
   addProduct(product: ProductInterface): void {
     this.productsCollection.add(product);
   }
